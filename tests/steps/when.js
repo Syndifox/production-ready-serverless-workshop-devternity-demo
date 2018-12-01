@@ -4,6 +4,7 @@ const aws4 = require('aws4')
 const URL = require('url')
 const http = require('superagent-promise')(require('superagent'), Promise)
 const mode = process.env.TEST_MODE
+const util = require('util')
 
 const respondFrom = async (httpRes) => {
   const contentType = _.get(httpRes, 'headers.content-type', 'application/json')
@@ -73,9 +74,8 @@ const viaHttp = async (relPath, method, opts) => {
     }
   }
 }
-
 const viaHandler = async (event, functionName) => {
-  const handler = require(`${APP_ROOT}/functions/${functionName}`).handler
+  const handler = util.promisify(require(`${APP_ROOT}/functions/${functionName}`).handler)
   console.log(`invoking via handler function ${functionName}`)
 
   const context = {}
@@ -86,7 +86,6 @@ const viaHandler = async (event, functionName) => {
   }
   return response
 }
-
 
 const toKinesisEvent = events => {
   const records = events.map(event => {
