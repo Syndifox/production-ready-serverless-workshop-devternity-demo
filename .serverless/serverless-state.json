@@ -16,6 +16,19 @@
       "environment": {
         "log_level": "DEBUG"
       },
+      "tracing": true,
+      "iamRoleStatements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "xray:PutTraceSegments",
+            "xray:PutTelemetryRecords"
+          ],
+          "Resource": [
+            "*"
+          ]
+        }
+      ],
       "versionFunctions": true,
       "remoteFunctionData": null,
       "compiledCloudFormationTemplate": {
@@ -136,6 +149,9 @@
                         ]
                       },
                       {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
+                      },
+                      {
                         "Effect": "Allow",
                         "Action": [
                           "kinesis:GetRecords",
@@ -179,7 +195,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/workshop-syndifox/dev/1543673780919-2018-12-01T14:16:20.919Z/workshop-syndifox.zip"
+                "S3Key": "serverless/workshop-syndifox/dev/1543676464699-2018-12-01T15:01:04.699Z/workshop-syndifox.zip"
               },
               "FunctionName": "workshop-syndifox-dev-get-index",
               "Handler": "functions/get-index.handler",
@@ -230,6 +246,9 @@
                     ]
                   }
                 }
+              },
+              "TracingConfig": {
+                "Mode": "Active"
               }
             },
             "DependsOn": [
@@ -237,14 +256,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetDashindexLambdaVersionsFRvJrUJeFsMoGuKKRhyuX26FTm3LqiuKd5NPyOZA": {
+          "GetDashindexLambdaVersionbyXmlmTsOp9kg01Q9FNqc79q0BtzsppCmAejGsG5Ao": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetDashindexLambdaFunction"
               },
-              "CodeSha256": "QZWIgqTNYP4+41EaCow1HvVXDmPDzGlf8ArP95ekHec="
+              "CodeSha256": "USTnjHPYeHVKzx6SmH07BtNww2W+BCLYKmNdna2omtg="
             }
           },
           "GetDashrestaurantsLambdaFunction": {
@@ -254,7 +273,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/workshop-syndifox/dev/1543673780919-2018-12-01T14:16:20.919Z/workshop-syndifox.zip"
+                "S3Key": "serverless/workshop-syndifox/dev/1543676464699-2018-12-01T15:01:04.699Z/workshop-syndifox.zip"
               },
               "FunctionName": "workshop-syndifox-dev-get-restaurants",
               "Handler": "functions/get-restaurants.handler",
@@ -280,6 +299,9 @@
                     "Ref": "restaurantsTable"
                   }
                 }
+              },
+              "TracingConfig": {
+                "Mode": "Active"
               }
             },
             "DependsOn": [
@@ -287,14 +309,14 @@
               "GetDashrestaurantsLogGroup"
             ]
           },
-          "GetDashrestaurantsLambdaVersionfTlcBtB4HiwpYBmsEfzZGFbcH6jMPb8q3hhqh704A": {
+          "GetDashrestaurantsLambdaVersionwAbT2w4SJfa4f3sZLBsLRCPv0b1GVhWGxkpATj31ac": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetDashrestaurantsLambdaFunction"
               },
-              "CodeSha256": "QZWIgqTNYP4+41EaCow1HvVXDmPDzGlf8ArP95ekHec="
+              "CodeSha256": "USTnjHPYeHVKzx6SmH07BtNww2W+BCLYKmNdna2omtg="
             }
           },
           "SearchDashrestaurantsLambdaFunction": {
@@ -304,7 +326,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/workshop-syndifox/dev/1543673780919-2018-12-01T14:16:20.919Z/workshop-syndifox.zip"
+                "S3Key": "serverless/workshop-syndifox/dev/1543676464699-2018-12-01T15:01:04.699Z/workshop-syndifox.zip"
               },
               "FunctionName": "workshop-syndifox-dev-search-restaurants",
               "Handler": "functions/search-restaurants.handler",
@@ -330,6 +352,9 @@
                     "Ref": "restaurantsTable"
                   }
                 }
+              },
+              "TracingConfig": {
+                "Mode": "Active"
               }
             },
             "DependsOn": [
@@ -337,14 +362,14 @@
               "SearchDashrestaurantsLogGroup"
             ]
           },
-          "SearchDashrestaurantsLambdaVersionbbExE1mndZzkeEHC59eza1AyDiJYaq2DicmfQurhQE": {
+          "SearchDashrestaurantsLambdaVersionsFZ5IA7HNmpXspYNw2HpY0CsPuXQzW5noaquRu88": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "SearchDashrestaurantsLambdaFunction"
               },
-              "CodeSha256": "QZWIgqTNYP4+41EaCow1HvVXDmPDzGlf8ArP95ekHec="
+              "CodeSha256": "USTnjHPYeHVKzx6SmH07BtNww2W+BCLYKmNdna2omtg="
             }
           },
           "PlaceDashorderLambdaFunction": {
@@ -354,7 +379,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/workshop-syndifox/dev/1543673780919-2018-12-01T14:16:20.919Z/workshop-syndifox.zip"
+                "S3Key": "serverless/workshop-syndifox/dev/1543676464699-2018-12-01T15:01:04.699Z/workshop-syndifox.zip"
               },
               "FunctionName": "workshop-syndifox-dev-place-order",
               "Handler": "functions/place-order.handler",
@@ -380,6 +405,9 @@
                     "Ref": "orderEventsStream"
                   }
                 }
+              },
+              "TracingConfig": {
+                "Mode": "Active"
               }
             },
             "DependsOn": [
@@ -387,14 +415,14 @@
               "PlaceDashorderLogGroup"
             ]
           },
-          "PlaceDashorderLambdaVersionwG8fVOQthEYPZvvdr1lpLPF2yMyqop0QU39t4LFjM": {
+          "PlaceDashorderLambdaVersionlmzxlV215IG4ZCDVsFfOCN6hTBJXH6lsUA6U9xiLc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "PlaceDashorderLambdaFunction"
               },
-              "CodeSha256": "QZWIgqTNYP4+41EaCow1HvVXDmPDzGlf8ArP95ekHec="
+              "CodeSha256": "USTnjHPYeHVKzx6SmH07BtNww2W+BCLYKmNdna2omtg="
             }
           },
           "NotifyDashrestaurantLambdaFunction": {
@@ -404,7 +432,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/workshop-syndifox/dev/1543673780919-2018-12-01T14:16:20.919Z/workshop-syndifox.zip"
+                "S3Key": "serverless/workshop-syndifox/dev/1543676464699-2018-12-01T15:01:04.699Z/workshop-syndifox.zip"
               },
               "FunctionName": "workshop-syndifox-dev-notify-restaurant",
               "Handler": "functions/notify-restaurant.handler",
@@ -433,6 +461,9 @@
                     "Ref": "restaurantNotificationTopic"
                   }
                 }
+              },
+              "TracingConfig": {
+                "Mode": "Active"
               }
             },
             "DependsOn": [
@@ -440,14 +471,14 @@
               "NotifyDashrestaurantLogGroup"
             ]
           },
-          "NotifyDashrestaurantLambdaVersionlZoqdZ0NJO08fIH71esrcRRCarBBxEgvwhUq9u24cBI": {
+          "NotifyDashrestaurantLambdaVersionv71tKgUd5jX6IEvYU0KkywqMXzUqaoF5FrB7oMFS5w": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "NotifyDashrestaurantLambdaFunction"
               },
-              "CodeSha256": "QZWIgqTNYP4+41EaCow1HvVXDmPDzGlf8ArP95ekHec="
+              "CodeSha256": "USTnjHPYeHVKzx6SmH07BtNww2W+BCLYKmNdna2omtg="
             }
           },
           "ApiGatewayRestApi": {
@@ -678,7 +709,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1543673781206": {
+          "ApiGatewayDeployment1543676465220": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -949,6 +980,9 @@
                         ]
                       },
                       {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
+                      },
+                      {
                         "Effect": "Allow",
                         "Action": "dynamodb:scan",
                         "Resource": {
@@ -1027,6 +1061,9 @@
                         ]
                       },
                       {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
+                      },
+                      {
                         "Effect": "Allow",
                         "Action": "dynamodb:scan",
                         "Resource": {
@@ -1103,6 +1140,9 @@
                             "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/workshop-syndifox-dev-place-order:*:*"
                           }
                         ]
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
                       },
                       {
                         "Effect": "Allow",
@@ -1192,9 +1232,12 @@
                         ],
                         "Resource": [
                           {
-                            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"IamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2][\"Resource\"][0]"
+                            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"IamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][3][\"Resource\"][0]"
                           }
                         ]
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
                       },
                       {
                         "Effect": "Allow",
@@ -1291,31 +1334,31 @@
           "GetDashindexLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetDashindexLambdaVersionsFRvJrUJeFsMoGuKKRhyuX26FTm3LqiuKd5NPyOZA"
+              "Ref": "GetDashindexLambdaVersionbyXmlmTsOp9kg01Q9FNqc79q0BtzsppCmAejGsG5Ao"
             }
           },
           "GetDashrestaurantsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetDashrestaurantsLambdaVersionfTlcBtB4HiwpYBmsEfzZGFbcH6jMPb8q3hhqh704A"
+              "Ref": "GetDashrestaurantsLambdaVersionwAbT2w4SJfa4f3sZLBsLRCPv0b1GVhWGxkpATj31ac"
             }
           },
           "SearchDashrestaurantsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SearchDashrestaurantsLambdaVersionbbExE1mndZzkeEHC59eza1AyDiJYaq2DicmfQurhQE"
+              "Ref": "SearchDashrestaurantsLambdaVersionsFZ5IA7HNmpXspYNw2HpY0CsPuXQzW5noaquRu88"
             }
           },
           "PlaceDashorderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "PlaceDashorderLambdaVersionwG8fVOQthEYPZvvdr1lpLPF2yMyqop0QU39t4LFjM"
+              "Ref": "PlaceDashorderLambdaVersionlmzxlV215IG4ZCDVsFfOCN6hTBJXH6lsUA6U9xiLc"
             }
           },
           "NotifyDashrestaurantLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "NotifyDashrestaurantLambdaVersionlZoqdZ0NJO08fIH71esrcRRCarBBxEgvwhUq9u24cBI"
+              "Ref": "NotifyDashrestaurantLambdaVersionv71tKgUd5jX6IEvYU0KkywqMXzUqaoF5FrB7oMFS5w"
             }
           },
           "ServiceEndpoint": {
@@ -1364,11 +1407,15 @@
       "logLevel": {
         "prod": "INFO",
         "default": "DEBUG"
+      },
+      "serverless-iam-roles-per-function": {
+        "defaultInherit": true
       }
     },
     "plugins": [
       "serverless-pseudo-parameters",
-      "serverless-iam-roles-per-function"
+      "serverless-iam-roles-per-function",
+      "serverless-plugin-tracing"
     ],
     "pluginsData": {},
     "functions": {
@@ -1434,7 +1481,7 @@
         },
         "iamRoleStatements": [
           {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"GetDashrestaurantsIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][1]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"GetDashrestaurantsIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2]"
           }
         ],
         "name": "workshop-syndifox-dev-get-restaurants",
@@ -1462,7 +1509,7 @@
         },
         "iamRoleStatements": [
           {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"SearchDashrestaurantsIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][1]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"SearchDashrestaurantsIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2]"
           }
         ],
         "name": "workshop-syndifox-dev-search-restaurants",
@@ -1490,7 +1537,7 @@
         },
         "iamRoleStatements": [
           {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"PlaceDashorderIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][1]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"PlaceDashorderIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2]"
           }
         ],
         "name": "workshop-syndifox-dev-place-order",
@@ -1507,7 +1554,7 @@
             "stream": {
               "type": "kinesis",
               "arn": {
-                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"IamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2][\"Resource\"][0]"
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"IamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][3][\"Resource\"][0]"
               }
             }
           }
@@ -1522,10 +1569,10 @@
         },
         "iamRoleStatements": [
           {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"NotifyDashrestaurantIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"NotifyDashrestaurantIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][3]"
           },
           {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"NotifyDashrestaurantIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][3]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"NotifyDashrestaurantIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][4]"
           }
         ],
         "name": "workshop-syndifox-dev-notify-restaurant",
@@ -1591,7 +1638,7 @@
     "artifact": "/Users/nils/dev/devternity2018/serverless/production-ready-serverless-workshop-devternity-demo/.serverless/workshop-syndifox.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/workshop-syndifox/dev/1543673780919-2018-12-01T14:16:20.919Z",
+    "artifactDirectoryName": "serverless/workshop-syndifox/dev/1543676464699-2018-12-01T15:01:04.699Z",
     "artifact": "workshop-syndifox.zip"
   }
 }

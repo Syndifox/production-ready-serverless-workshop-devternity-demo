@@ -11,6 +11,7 @@ const init = async () => {
   process.env.order_events_stream = 'orders-dev-syndifox'
   process.env.restaurant_notification_topic = 'restaurants-dev-syndifox'
   process.env.TEST_ROOT = "https://ilza8tk6h9.execute-api.eu-west-1.amazonaws.com/dev"
+  process.env.AWS_XRAY_CONTEXT_MISSING = 'LOG_ERROR'
   
   initialized = true
 }
