@@ -117,33 +117,6 @@
                 },
                 {
                   "Effect": "Allow",
-                  "Action": "dynamodb:scan",
-                  "Resource": {
-                    "Fn::GetAtt": [
-                      "restaurantsTable",
-                      "Arn"
-                    ]
-                  }
-                },
-                {
-                  "Effect": "Allow",
-                  "Action": "kinesis:PutRecord",
-                  "Resource": {
-                    "Fn::GetAtt": [
-                      "orderEventsStream",
-                      "Arn"
-                    ]
-                  }
-                },
-                {
-                  "Effect": "Allow",
-                  "Action": "sns:Publish",
-                  "Resource": {
-                    "Ref": "restaurantNotificationTopic"
-                  }
-                },
-                {
-                  "Effect": "Allow",
                   "Action": [
                     "kinesis:GetRecords",
                     "kinesis:GetShardIterator",
@@ -186,7 +159,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/workshop-syndifox/dev/1543656238976-2018-12-01T09:23:58.976Z/workshop-syndifox.zip"
+          "S3Key": "serverless/workshop-syndifox/dev/1543671195488-2018-12-01T13:33:15.488Z/workshop-syndifox.zip"
         },
         "FunctionName": "workshop-syndifox-dev-get-index",
         "Handler": "functions/get-index.handler",
@@ -243,14 +216,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GetDashindexLambdaVersionnTWYUrWmy0fkWidAvsAqMQ5n4YuLrhoTHkftAh4g": {
+    "GetDashindexLambdaVersionFLLhvsyaYLsiOyIq0YvMbF4DLx6j7XP8MpPCTgw8R0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetDashindexLambdaFunction"
         },
-        "CodeSha256": "o0fPRahSKMbJvYOYEioxSRTb5JfNdwWFppM0WHdKKas="
+        "CodeSha256": "GLT84ikKRHUkK6am27HYClbCjZS9zgSs/BpaNeOzzCM="
       }
     },
     "GetDashrestaurantsLambdaFunction": {
@@ -260,14 +233,14 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/workshop-syndifox/dev/1543656238976-2018-12-01T09:23:58.976Z/workshop-syndifox.zip"
+          "S3Key": "serverless/workshop-syndifox/dev/1543671195488-2018-12-01T13:33:15.488Z/workshop-syndifox.zip"
         },
         "FunctionName": "workshop-syndifox-dev-get-restaurants",
         "Handler": "functions/get-restaurants.handler",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
-            "IamRoleLambdaExecution",
+            "GetDashrestaurantsIamRoleLambdaExecution",
             "Arn"
           ]
         },
@@ -288,18 +261,18 @@
         }
       },
       "DependsOn": [
-        "GetDashrestaurantsLogGroup",
-        "IamRoleLambdaExecution"
+        "GetDashrestaurantsIamRoleLambdaExecution",
+        "GetDashrestaurantsLogGroup"
       ]
     },
-    "GetDashrestaurantsLambdaVersionoc3JNRlHubk63G0GgdCntLEeGWm00QywwbRjwklVA": {
+    "GetDashrestaurantsLambdaVersionbq9NiU0P8REMNQ5sEs7FmfBpGzYwViF3wMjqa1ee8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetDashrestaurantsLambdaFunction"
         },
-        "CodeSha256": "o0fPRahSKMbJvYOYEioxSRTb5JfNdwWFppM0WHdKKas="
+        "CodeSha256": "GLT84ikKRHUkK6am27HYClbCjZS9zgSs/BpaNeOzzCM="
       }
     },
     "SearchDashrestaurantsLambdaFunction": {
@@ -309,14 +282,14 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/workshop-syndifox/dev/1543656238976-2018-12-01T09:23:58.976Z/workshop-syndifox.zip"
+          "S3Key": "serverless/workshop-syndifox/dev/1543671195488-2018-12-01T13:33:15.488Z/workshop-syndifox.zip"
         },
         "FunctionName": "workshop-syndifox-dev-search-restaurants",
         "Handler": "functions/search-restaurants.handler",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
-            "IamRoleLambdaExecution",
+            "SearchDashrestaurantsIamRoleLambdaExecution",
             "Arn"
           ]
         },
@@ -337,18 +310,18 @@
         }
       },
       "DependsOn": [
-        "SearchDashrestaurantsLogGroup",
-        "IamRoleLambdaExecution"
+        "SearchDashrestaurantsIamRoleLambdaExecution",
+        "SearchDashrestaurantsLogGroup"
       ]
     },
-    "SearchDashrestaurantsLambdaVersionshf426W8ya0DpNQmae6ZCTw7SSJOf30huEW5886cOQ": {
+    "SearchDashrestaurantsLambdaVersion44dK0RtLsGoh7pChIORBKtyLR0sHuoIHB2Ek4s6Rn0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SearchDashrestaurantsLambdaFunction"
         },
-        "CodeSha256": "o0fPRahSKMbJvYOYEioxSRTb5JfNdwWFppM0WHdKKas="
+        "CodeSha256": "GLT84ikKRHUkK6am27HYClbCjZS9zgSs/BpaNeOzzCM="
       }
     },
     "PlaceDashorderLambdaFunction": {
@@ -358,14 +331,14 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/workshop-syndifox/dev/1543656238976-2018-12-01T09:23:58.976Z/workshop-syndifox.zip"
+          "S3Key": "serverless/workshop-syndifox/dev/1543671195488-2018-12-01T13:33:15.488Z/workshop-syndifox.zip"
         },
         "FunctionName": "workshop-syndifox-dev-place-order",
         "Handler": "functions/place-order.handler",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
-            "IamRoleLambdaExecution",
+            "PlaceDashorderIamRoleLambdaExecution",
             "Arn"
           ]
         },
@@ -386,18 +359,18 @@
         }
       },
       "DependsOn": [
-        "PlaceDashorderLogGroup",
-        "IamRoleLambdaExecution"
+        "PlaceDashorderIamRoleLambdaExecution",
+        "PlaceDashorderLogGroup"
       ]
     },
-    "PlaceDashorderLambdaVersionsAbiRlzcYjl5bueQWgnT7RNw6fVJ5fCH8ntNR86YV4o": {
+    "PlaceDashorderLambdaVersion09Xnxw8ITZsHPjsW8xWHSPSn7kBqfXCnpNvvM88F6c0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "PlaceDashorderLambdaFunction"
         },
-        "CodeSha256": "o0fPRahSKMbJvYOYEioxSRTb5JfNdwWFppM0WHdKKas="
+        "CodeSha256": "GLT84ikKRHUkK6am27HYClbCjZS9zgSs/BpaNeOzzCM="
       }
     },
     "NotifyDashrestaurantLambdaFunction": {
@@ -407,14 +380,14 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/workshop-syndifox/dev/1543656238976-2018-12-01T09:23:58.976Z/workshop-syndifox.zip"
+          "S3Key": "serverless/workshop-syndifox/dev/1543671195488-2018-12-01T13:33:15.488Z/workshop-syndifox.zip"
         },
         "FunctionName": "workshop-syndifox-dev-notify-restaurant",
         "Handler": "functions/notify-restaurant.handler",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
-            "IamRoleLambdaExecution",
+            "NotifyDashrestaurantIamRoleLambdaExecution",
             "Arn"
           ]
         },
@@ -438,18 +411,18 @@
         }
       },
       "DependsOn": [
-        "NotifyDashrestaurantLogGroup",
-        "IamRoleLambdaExecution"
+        "NotifyDashrestaurantIamRoleLambdaExecution",
+        "NotifyDashrestaurantLogGroup"
       ]
     },
-    "NotifyDashrestaurantLambdaVersionIdc8jGTHVLw9XqFaoSJCenXuyf64UE8hE6IL3xbzXQ": {
+    "NotifyDashrestaurantLambdaVersiongmFXZqchsOpqWaHLGlypG2pjJbUtZGIrwmWpf98wCQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "NotifyDashrestaurantLambdaFunction"
         },
-        "CodeSha256": "o0fPRahSKMbJvYOYEioxSRTb5JfNdwWFppM0WHdKKas="
+        "CodeSha256": "GLT84ikKRHUkK6am27HYClbCjZS9zgSs/BpaNeOzzCM="
       }
     },
     "ApiGatewayRestApi": {
@@ -680,7 +653,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1543656239204": {
+    "ApiGatewayDeployment1543671195751": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -885,7 +858,7 @@
     },
     "NotifyDashrestaurantEventSourceMappingKinesisOrderEventsStream": {
       "Type": "AWS::Lambda::EventSourceMapping",
-      "DependsOn": "IamRoleLambdaExecution",
+      "DependsOn": "NotifyDashrestaurantIamRoleLambdaExecution",
       "Properties": {
         "BatchSize": 10,
         "EventSourceArn": {
@@ -904,10 +877,346 @@
         "Enabled": "True"
       }
     },
+    "GetDashrestaurantsIamRoleLambdaExecution": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "workshop-syndifox",
+                  "lambda"
+                ]
+              ]
+            },
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/workshop-syndifox-dev-get-restaurants:*:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": "dynamodb:scan",
+                  "Resource": {
+                    "Fn::GetAtt": [
+                      "restaurantsTable",
+                      "Arn"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "Path": "/",
+        "RoleName": {
+          "Fn::Join": [
+            "-",
+            [
+              "workshop-syndifox",
+              "dev",
+              "get-restaurants",
+              {
+                "Fn::Sub": "${AWS::Region}"
+              },
+              "lambdaRole"
+            ]
+          ]
+        },
+        "ManagedPolicyArns": []
+      }
+    },
+    "SearchDashrestaurantsIamRoleLambdaExecution": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "workshop-syndifox",
+                  "lambda"
+                ]
+              ]
+            },
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/workshop-syndifox-dev-search-restaurants:*:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": "dynamodb:scan",
+                  "Resource": {
+                    "Fn::GetAtt": [
+                      "restaurantsTable",
+                      "Arn"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "Path": "/",
+        "RoleName": {
+          "Fn::Join": [
+            "-",
+            [
+              "workshop-syndifox",
+              "dev",
+              "search-restaurants",
+              {
+                "Fn::Sub": "${AWS::Region}"
+              },
+              "lambdaRole"
+            ]
+          ]
+        },
+        "ManagedPolicyArns": []
+      }
+    },
+    "PlaceDashorderIamRoleLambdaExecution": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "workshop-syndifox",
+                  "lambda"
+                ]
+              ]
+            },
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/workshop-syndifox-dev-place-order:*:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": "kinesis:PutRecord",
+                  "Resource": {
+                    "Fn::GetAtt": [
+                      "orderEventsStream",
+                      "Arn"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "Path": "/",
+        "RoleName": {
+          "Fn::Join": [
+            "-",
+            [
+              "workshop-syndifox",
+              "dev",
+              "place-order",
+              {
+                "Fn::Sub": "${AWS::Region}"
+              },
+              "lambdaRole"
+            ]
+          ]
+        },
+        "ManagedPolicyArns": []
+      }
+    },
+    "NotifyDashrestaurantIamRoleLambdaExecution": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "workshop-syndifox",
+                  "lambda"
+                ]
+              ]
+            },
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/workshop-syndifox-dev-notify-restaurant:*:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "kinesis:GetRecords",
+                    "kinesis:GetShardIterator",
+                    "kinesis:DescribeStream",
+                    "kinesis:ListStreams"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::GetAtt": [
+                        "orderEventsStream",
+                        "Arn"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": "kinesis:PutRecord",
+                  "Resource": {
+                    "Fn::GetAtt": [
+                      "orderEventsStream",
+                      "Arn"
+                    ]
+                  }
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": "sns:Publish",
+                  "Resource": {
+                    "Ref": "restaurantNotificationTopic"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "Path": "/",
+        "RoleName": {
+          "Fn::Join": [
+            "-",
+            [
+              "workshop-syndifox",
+              "dev",
+              "notify-restaurant",
+              {
+                "Fn::Sub": "${AWS::Region}"
+              },
+              "lambdaRole"
+            ]
+          ]
+        },
+        "ManagedPolicyArns": []
+      }
+    },
     "restaurantsTable": {
       "Type": "AWS::DynamoDB::Table",
       "Properties": {
-        "TableName": "restaurants-dev-syndifox",
+        "TableName": "workshop-syndifox",
         "AttributeDefinitions": [
           {
             "AttributeName": "name",
@@ -960,31 +1269,31 @@
     "GetDashindexLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetDashindexLambdaVersionnTWYUrWmy0fkWidAvsAqMQ5n4YuLrhoTHkftAh4g"
+        "Ref": "GetDashindexLambdaVersionFLLhvsyaYLsiOyIq0YvMbF4DLx6j7XP8MpPCTgw8R0"
       }
     },
     "GetDashrestaurantsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetDashrestaurantsLambdaVersionoc3JNRlHubk63G0GgdCntLEeGWm00QywwbRjwklVA"
+        "Ref": "GetDashrestaurantsLambdaVersionbq9NiU0P8REMNQ5sEs7FmfBpGzYwViF3wMjqa1ee8"
       }
     },
     "SearchDashrestaurantsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SearchDashrestaurantsLambdaVersionshf426W8ya0DpNQmae6ZCTw7SSJOf30huEW5886cOQ"
+        "Ref": "SearchDashrestaurantsLambdaVersion44dK0RtLsGoh7pChIORBKtyLR0sHuoIHB2Ek4s6Rn0"
       }
     },
     "PlaceDashorderLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "PlaceDashorderLambdaVersionsAbiRlzcYjl5bueQWgnT7RNw6fVJ5fCH8ntNR86YV4o"
+        "Ref": "PlaceDashorderLambdaVersion09Xnxw8ITZsHPjsW8xWHSPSn7kBqfXCnpNvvM88F6c0"
       }
     },
     "NotifyDashrestaurantLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "NotifyDashrestaurantLambdaVersionIdc8jGTHVLw9XqFaoSJCenXuyf64UE8hE6IL3xbzXQ"
+        "Ref": "NotifyDashrestaurantLambdaVersiongmFXZqchsOpqWaHLGlypG2pjJbUtZGIrwmWpf98wCQ"
       }
     },
     "ServiceEndpoint": {

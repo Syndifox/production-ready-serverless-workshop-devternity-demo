@@ -49,7 +49,7 @@ let restaurants = [
 ];
 
 const getTableName = async () => {
-  return `restaurants-${STAGE}-syndifox`
+  return `workshop-syndifox`
 }
 
 const run = async () => {
